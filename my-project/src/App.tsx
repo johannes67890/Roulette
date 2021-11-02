@@ -1,11 +1,11 @@
 import React from "react";
 
-const App = () => {
+function App() {
   return (
     <div>
-      <h2>test</h2>
+      <h2 className="mx-7">test</h2>
     </div>
   );
-};
+}
 
 export default App;

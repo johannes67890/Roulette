@@ -6,11 +6,12 @@ module.exports = {
       keyframes: {
         roll: {
           "0%": { transform: "translate3d(0,0,0)" },
-          "100%": { transform: "translate3d(-100%,0,0)" },
+          "100%": { transform: "translate3d(-101%,0,0)" },
         },
       },
       animation: {
         roll: "roll 8s linear infinite",
+        rollfast: "roll 6s ease-out forwards",
       },
       colors: {
         green: "#00D100",

@@ -5,7 +5,6 @@ import $ from "jquery";
 
 //https://css-tricks.com/restart-css-animation/
 function App() {
-  let val = 0;
   const [IsSpin, setIsSpin] = useState<Boolean>(false);
   return (
     <>
@@ -92,18 +91,19 @@ function spin() {
   $("#window").css({
     right: "0",
   });
-  //var x = getRandomInt(20, 53);
-  let x = 21;
+  var resultIndex = getRandomInt(20, 53); // get random resultd
+
+  let calculatedPosition = Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); //get pos from Tiles and add random miss-postion (for realisme)
   $("#window").animate(
     {
-      right: x * 48 + x * 10,
+      right: calculatedPosition,
     },
-    1000
+    7500 //animation time
   );
-  let result = Tiles[x - 20];
-  console.log("x: ", x);
-  console.log("xxxxx: ", x * 48 + x * 10);
-  console.log("result: ", result);
+  // debuging
+  console.log("pos: ", calculatedPosition);
+  console.log("resultIndex: ", resultIndex);
+  console.log("result: ", Tiles[resultIndex - 20]);
 }
 
 export default App;

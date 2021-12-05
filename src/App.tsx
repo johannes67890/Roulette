@@ -4,6 +4,8 @@ import { useState } from "react";
 import $ from "jquery";
 
 //https://css-tricks.com/restart-css-animation/
+export let resultIndex: number; // get random resultd
+
 function App() {
   const [IsSpin, setIsSpin] = useState<Boolean>(false);
   return (
@@ -23,22 +25,26 @@ function App() {
           }}
         >
           <ul className={IsSpin === true ? "" : "flex animate-roll"}>
-            {Tiles.map((index) => (
+            {/*!!!!!!!!!!!!!!!!!!!! NEEDS A LOOP !!!!!!!!!!!!!!!!!!!!*/}
+            {Tiles.map((index, key) => (
               <li
+                key={key}
                 className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
               >
                 <span className="align-middle text-white ">{index.val}</span>
               </li>
             ))}
-            {Tiles.map((index) => (
+            {Tiles.map((index, key) => (
               <li
+                key={key}
                 className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
               >
                 <span className="align-middle text-white ">{index.val}</span>
               </li>
             ))}
-            {Tiles.map((index) => (
+            {Tiles.map((index, key) => (
               <li
+                key={key}
                 className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
               >
                 <span className="align-middle text-white ">{index.val}</span>
@@ -47,8 +53,39 @@ function App() {
           </ul>
         </div>
         <button
+          id="spin"
+          disabled={IsSpin === true ? true : false}
           onClick={() => {
-            IsSpin === true ? spin() : setIsSpin(!IsSpin);
+            $("#window").css({
+              right: "0",
+            });
+            resultIndex = getRandomInt(20, 53);
+            let calculatedPosition =
+              Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
+            $("#window").animate(
+              {
+                right: calculatedPosition,
+              },
+              7500 //animation time
+            );
+            $("#spin").css("cursor", "not-allowed");
+
+            setTimeout(() => {
+              $("#spin").css("cursor", "pointer");
+              $("#window").css({
+                right: "0",
+              });
+              setIsSpin(false);
+            }, 12000);
+            // debuging
+            // console.log("pos: ", calculatedPosition);
+            // console.log("resultIndex: ", resultIndex);
+            console.log("App result: ", Tiles[resultIndex - 20]);
+
+            if (IsSpin === false) {
+              setIsSpin(!IsSpin);
+            }
+            return resultIndex;
           }}
           className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
         >
@@ -81,29 +118,10 @@ function App() {
   );
 }
 
-function spin() {
-  function getRandomInt(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-  }
-
-  $("#window").css({
-    right: "0",
-  });
-  var resultIndex = getRandomInt(20, 53); // get random resultd
-
-  let calculatedPosition = Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); //get pos from Tiles and add random miss-postion (for realisme)
-  $("#window").animate(
-    {
-      right: calculatedPosition,
-    },
-    7500 //animation time
-  );
-  // debuging
-  console.log("pos: ", calculatedPosition);
-  console.log("resultIndex: ", resultIndex);
-  console.log("result: ", Tiles[resultIndex - 20]);
+function getRandomInt(min: number, max: number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
 export default App;

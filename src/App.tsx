@@ -59,7 +59,7 @@ function App() {
             $("#window").css({
               right: "0",
             });
-            resultIndex = getRandomInt(20, 53);
+            resultIndex = getRandomInt(20, 56);
             let calculatedPosition =
               Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
             $("#window").animate(
@@ -78,8 +78,6 @@ function App() {
               setIsSpin(false);
             }, 12000);
             // debuging
-            // console.log("pos: ", calculatedPosition);
-            // console.log("resultIndex: ", resultIndex);
             console.log("App result: ", Tiles[resultIndex - 20]);
 
             if (IsSpin === false) {
@@ -102,7 +100,7 @@ function App() {
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <path
                 className="opacity-75"

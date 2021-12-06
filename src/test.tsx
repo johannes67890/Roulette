@@ -1,12 +1,12 @@
-import React from "react";
-import { resultIndex } from "./App";
-import { Tiles } from "./Tiles";
-const Test = () => {
+import React, { FC, useContext } from "react";
+import { TestContext } from "./App";
+
+const Test: FC<{ result: number | undefined }> = ({ result }) => {
   return (
     <div>
-      <h2>test</h2>
-      <h2>{resultIndex} </h2>
-      {console.log("test result: ", Tiles[resultIndex - 20])}
+      <h2>test:</h2>
+      <h2>{result}</h2>
+      {console.log("test result: ", result)}
     </div>
   );
 };

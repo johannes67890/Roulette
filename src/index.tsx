@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Test from "./test";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    <Test />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const Index = () => {
+  const [result, setResult] = useState<number | undefined>(undefined);
+
+  return (
+    <React.StrictMode>
+      <App setResult={setResult} />
+      <Test result={result} />
+    </React.StrictMode>
+  );
+};
+
+ReactDOM.render(<Index />, document.getElementById("root"));

@@ -1,13 +1,17 @@
-import React from "react";
 import { Tiles } from "./Tiles";
-import { useState } from "react";
+import { useState, useEffect, Children, FC } from "react";
 import $ from "jquery";
+import { createContext } from "react";
 
 //https://css-tricks.com/restart-css-animation/
-export let resultIndex: number; // get random resultd
 
-function App() {
+export let TestContext = createContext<number | undefined>(undefined);
+let resultIndex: number;
+const App: FC<{
+  setResult: React.Dispatch<React.SetStateAction<number | undefined>>;
+}> = ({ setResult }) => {
   const [IsSpin, setIsSpin] = useState<Boolean>(false);
+
   return (
     <>
       <div className="overflow-hidden mx-auto max-w-7xl">
@@ -79,11 +83,11 @@ function App() {
             }, 12000);
             // debuging
             console.log("App result: ", Tiles[resultIndex - 20]);
+            setResult(Tiles[resultIndex - 20].val);
 
             if (IsSpin === false) {
               setIsSpin(!IsSpin);
             }
-            return resultIndex;
           }}
           className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
         >
@@ -114,7 +118,7 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);

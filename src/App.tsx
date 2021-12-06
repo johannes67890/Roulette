@@ -19,6 +19,9 @@ function App() {
           </li>
         ))}
       </ul>
+      <button className="mx-auto px-2 py-1 border-2 bg-gray-400 rounded-lg hover:bg-gray-700">
+        <span>Click</span>
+      </button>
     </div>
   );
 }

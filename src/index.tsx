@@ -5,28 +5,6 @@ import App from "./App";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Table from "./betTable"
 
 ReactDOM.render(

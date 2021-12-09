@@ -17,7 +17,7 @@ const App: FC<{
       <div className="overflow-hidden mx-auto max-w-7xl">
         <div
           style={{ width: "640px" }}
-          className="absolute border-r-4 h-12 max-w-7xl z-10 border-indigo-800"
+          className="absolute border-r-4 h-12 max-w-7xl z-10 border-blue-600"
         ></div>
         <div
           id="window"
@@ -81,13 +81,11 @@ const App: FC<{
               });
               setIsSpin(false);
             }, 12000);
-            // debuging
-            console.log("App result: ", Tiles[resultIndex - 20]);
-            setResult(Tiles[resultIndex - 20].val);
 
             if (IsSpin === false) {
               setIsSpin(!IsSpin);
             }
+            return setResult(Tiles[resultIndex - 20].val);
           }}
           className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
         >

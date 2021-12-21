@@ -1,11 +1,10 @@
 import { Tiles } from "./Tiles";
-import { useState, useEffect, Children, FC } from "react";
+import { useState, FC } from "react";
 import $ from "jquery";
-import { createContext } from "react";
+import Winner from "./Winner";
 
 //https://css-tricks.com/restart-css-animation/
 
-export let TestContext = createContext<number | undefined>(undefined);
 let resultIndex: number;
 const App: FC<{
   setResult: React.Dispatch<React.SetStateAction<number | undefined>>;
@@ -63,6 +62,7 @@ const App: FC<{
             $("#window").css({
               right: "0",
             });
+            /* Roll animation */
             resultIndex = getRandomInt(20, 56);
             let calculatedPosition =
               Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
@@ -74,6 +74,11 @@ const App: FC<{
             );
             $("#spin").css("cursor", "not-allowed");
 
+            /* Winning number animation */
+            $("#winner").removeClass("animate-winner"); //remove class to reset animation
+            $("#winner").hide(); //hide element
+
+            /* Disable cursor */
             setTimeout(() => {
               $("#spin").css("cursor", "pointer");
               $("#window").css({
@@ -85,7 +90,9 @@ const App: FC<{
             if (IsSpin === false) {
               setIsSpin(!IsSpin);
             }
-            return setResult(Tiles[resultIndex - 20].val);
+            return setTimeout(() => {
+              setResult(Tiles[resultIndex - 20].val);
+            }, 8000);
           }}
           className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
         >

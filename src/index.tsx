@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Wheel";
-import Test from "./test";
+import Winner from "./Winner";
 
 const Index = () => {
   const [result, setResult] = useState<number | undefined>(undefined);
@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <React.StrictMode>
       <App setResult={setResult} />
-      <Test result={result} />
+      <Winner result={result} />
     </React.StrictMode>
   );
 };

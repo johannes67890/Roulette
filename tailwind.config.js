@@ -8,10 +8,16 @@ module.exports = {
           "0%": { transform: "translate3d(0,0,0)" },
           "100%": { transform: "translate3d(-66.5%,0,0)" },
         },
+        winner: {
+          "0%": { width: "3px", height: "60px", opacity: "0", display: "none" },
+          "30%": { width: "3px", height: "240px", opacity: "1" },
+          "50%": { width: "480px", height: "240px", opacity: "1" },
+          "100%": { width: "480px", height: "240px", opacity: "1" },
+        },
       },
       animation: {
         roll: "roll 12s linear infinite",
-        rollfast: "roll 6s ease-out forwards",
+        winner: "winner 3s 2 ease-in-out alternate forwards",
       },
       colors: {
         green: "#00D100",

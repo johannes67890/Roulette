@@ -30,7 +30,7 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
         {history.map((value, key) => {
           return (
             <li
-              className={`bg-${value.color} border-b text-center rounded mx-0.5`}
+              className={`bg-${value.color} border-b text-center rounded mx-0.5 mb-px`}
               key={key}
             >
               <span className="text-white">{value.val} </span>

@@ -39,7 +39,7 @@ const Wheel: FC<{
             WinningNumAnimation();
             CusorAnimation(setIsSpin);
           }}
-          className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
+          className="flex mx-auto px-2 py-1 border-2 text-white bg-blue-700 rounded-lg hover:bg-blue-400"
         >
           {IsSpin === true ? (
             <svg
@@ -63,7 +63,7 @@ const Wheel: FC<{
               ></path>
             </svg>
           ) : null}
-          <span className="font-mono text-lg">Spin</span>
+          <span className="font-mono text-lg">Roll</span>
         </button>
       </div>
     </>

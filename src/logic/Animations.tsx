@@ -3,7 +3,7 @@ import $ from "jquery";
 
 let resultIndex: number;
 const spinTime: number = 7500; //default: 7500
-const intermissionTime: number = 9500; // default: 9500
+const intermissionTime: number = 1000; // default: 9500
 const CursorDisabledTime: number = 12000; // default: 12000
 
 export function Spin(

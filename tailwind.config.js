@@ -18,6 +18,7 @@ module.exports = {
       animation: {
         roll: "roll 12s linear infinite",
         winner: "winner 3s 2 ease-in-out alternate forwards",
+        "bounce-slow": "bounce 1.5s infinite",
       },
       colors: {
         green: "#00D100",

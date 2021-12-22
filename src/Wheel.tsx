@@ -12,7 +12,7 @@ const Wheel: FC<{
 
   return (
     <>
-      <div className="overflow-hidden mx-auto max-w-7xl">
+      <div className="overflow-hidden">
         <div
           style={{ width: "640px" }}
           className="absolute border-r-4 h-12 max-w-7xl z-10 border-blue-600"
@@ -38,7 +38,8 @@ const Wheel: FC<{
               right: "0",
             });
             /* Roll animation */
-            resultIndex = getRandomInt(20, 56);
+            //resultIndex = getRandomInt(20, 56);
+            resultIndex = 23;
             let calculatedPosition =
               Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
             $("#window").animate(
@@ -66,6 +67,7 @@ const Wheel: FC<{
               setIsSpin(!IsSpin);
             }
             setTimeout(() => {
+              //set result to global state 1 sec after animation is done
               setResult(Tiles[resultIndex - 20]);
             }, 8000);
           }}

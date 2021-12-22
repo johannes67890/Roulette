@@ -38,8 +38,7 @@ const Wheel: FC<{
               right: "0",
             });
             /* Roll animation */
-            //resultIndex = getRandomInt(20, 56);
-            resultIndex = 23;
+            resultIndex = getRandomInt(20, 56);
             let calculatedPosition =
               Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
             $("#window").animate(

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Wheel from "./Wheel";
-import Winner from "./Winner";
-import { TileType } from "./Tiles";
-import History from "./History";
-import Test from "./Test";
+import Wheel from "./components//Wheel";
+import Winner from "./components/Winner";
+import { TileType } from "./components/Tiles";
+import History from "./components/History";
+import Test from "./components/Test";
 
 const Index = () => {
   const [result, setResult] = useState<TileType | undefined>();

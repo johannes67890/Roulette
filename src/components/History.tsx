@@ -5,7 +5,7 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
   const [history, setHistory] = useState<Array<TileType>>([]);
 
   useEffect(() => {
-    if (result != undefined) {
+    if (result !== undefined) {
       setHistory((prev) => [result].concat(prev));
     }
   }, [result]);

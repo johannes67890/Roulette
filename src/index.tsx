@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./Wheel";
+import Wheel from "./Wheel";
 import Winner from "./Winner";
+import { TileType } from "./Tiles";
 
 const Index = () => {
-  const [result, setResult] = useState<number | undefined>(undefined);
+  const [result, setResult] = useState<TileType | undefined>();
 
   return (
     <React.StrictMode>
-      <App setResult={setResult} />
+      <Wheel setResult={setResult} />
       <Winner result={result} />
     </React.StrictMode>
   );

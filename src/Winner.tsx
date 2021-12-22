@@ -1,18 +1,20 @@
 import { FC } from "react";
 import $ from "jquery";
-const Winner: FC<{ result: number | undefined }> = ({ result }) => {
+import { TileType } from "./Tiles";
+
+const Winner: FC<{ result: TileType | undefined }> = ({ result }) => {
   $("#winner").addClass("animate-winner"); //add class to play animation
   $("#winner").show(); // show element
-
+  console.log(result);
   return (
     <>
       {result !== undefined ? (
         <div
           id="winner"
-          className={`animate-winner mx-auto overflow-hidden shadow-md bg-gray-600 border-2 border-yellow-300 rounded-md`}
+          className={`animate-winner mx-auto overflow-hidden shadow-md bg-${result.color} border-2 shadow-yellow-300 border-yellow-300 rounded-md`}
         >
           <h1 className="flex text-3xl font-bold justify-center items-center top-1/2">
-            {result}
+            {result.val}
           </h1>
         </div>
       ) : null}

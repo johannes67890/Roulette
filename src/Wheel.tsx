@@ -1,13 +1,12 @@
 import { Tiles } from "./Tiles";
-import { useState, FC } from "react";
+import { useState, FC, ReactElement } from "react";
 import $ from "jquery";
-import Winner from "./Winner";
-
+import { TileType } from "./Tiles";
 //https://css-tricks.com/restart-css-animation/
 
 let resultIndex: number;
-const App: FC<{
-  setResult: React.Dispatch<React.SetStateAction<number | undefined>>;
+const Wheel: FC<{
+  setResult: React.Dispatch<React.SetStateAction<TileType | undefined>>;
 }> = ({ setResult }) => {
   const [IsSpin, setIsSpin] = useState<Boolean>(false);
 
@@ -28,31 +27,7 @@ const App: FC<{
           }}
         >
           <ul className={IsSpin === true ? "" : "flex animate-roll"}>
-            {/*!!!!!!!!!!!!!!!!!!!! NEEDS A LOOP !!!!!!!!!!!!!!!!!!!!*/}
-            {Tiles.map((index, key) => (
-              <li
-                key={key}
-                className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
-              >
-                <span className="align-middle text-white ">{index.val}</span>
-              </li>
-            ))}
-            {Tiles.map((index, key) => (
-              <li
-                key={key}
-                className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
-              >
-                <span className="align-middle text-white ">{index.val}</span>
-              </li>
-            ))}
-            {Tiles.map((index, key) => (
-              <li
-                key={key}
-                className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
-              >
-                <span className="align-middle text-white ">{index.val}</span>
-              </li>
-            ))}
+            {RenderTiles(3) /* render tiles fra function */}
           </ul>
         </div>
         <button
@@ -90,8 +65,8 @@ const App: FC<{
             if (IsSpin === false) {
               setIsSpin(!IsSpin);
             }
-            return setTimeout(() => {
-              setResult(Tiles[resultIndex - 20].val);
+            setTimeout(() => {
+              setResult(Tiles[resultIndex - 20]);
             }, 8000);
           }}
           className="flex mx-auto px-2 py-1 border-2 bg-blue-700 rounded-lg hover:bg-blue-400"
@@ -125,10 +100,29 @@ const App: FC<{
   );
 };
 
+function RenderTiles(sets: number) {
+  //sets af Tiles
+  let items: JSX.Element[][] = []; // Indeholder specifike Tiles. Retruner array af JSX elementet + .map funktionen
+
+  for (let i = 0; i < sets; i++) {
+    items.push(
+      Tiles.map((index, key) => (
+        <li
+          key={key}
+          className={`bg-${index.color} flex-none w-12 h-12 self-start text-center align-middle inline-block leading-10`}
+        >
+          <span className="align-middle text-white ">{index.val}</span>
+        </li>
+      ))
+    );
+  }
+  return items;
+}
+
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-export default App;
+export default Wheel;

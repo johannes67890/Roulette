@@ -1,4 +1,10 @@
-export const Tiles = [
+export type TileType = {
+  val: number;
+  color: string;
+  pos: number;
+};
+
+export const Tiles: Array<TileType> = [
   {
     val: 0,
     color: "green",

@@ -13,7 +13,7 @@ const Wheel: FC<{
   const [IsSpin, setIsSpin] = useState<boolean>(false);
   return (
     <>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden mt-20">
         <div
           style={{ width: "640px" }}
           className="absolute border-r-4 h-12 max-w-7xl z-10 border-blue-600"
@@ -39,7 +39,7 @@ const Wheel: FC<{
             WinningNumAnimation();
             CusorAnimation(setIsSpin);
           }}
-          className="flex mx-auto px-2 py-1 border-2 text-white bg-blue-700 rounded-lg hover:bg-blue-400"
+          className="flex mx-auto px-5 py-1.5 my-2  text-white bg-blue-700 rounded-lg hover:bg-opacity-60"
         >
           {IsSpin === true ? (
             <svg

@@ -3,7 +3,7 @@ import $ from "jquery";
 
 let resultIndex: number;
 const spinTime: number = 7500; //default: 7500
-const intermissionTime: number = 1000; // default: 9500
+const intermissionTime: number = 9500; // default: 9500
 const CursorDisabledTime: number = 12000; // default: 12000
 
 export function Spin(
@@ -71,6 +71,7 @@ export function RenderTiles(sets: number) {
   }
   return items;
 }
+
 function getCalcPos() {
   resultIndex = getRandomInt(20, 56);
   return Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)

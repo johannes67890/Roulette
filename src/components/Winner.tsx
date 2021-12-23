@@ -7,7 +7,7 @@ const Winner: FC<{ result: TileType | undefined }> = ({ result }) => {
       {result !== undefined ? (
         <div
           id="winner"
-          className={`animate-winner absolute ml-96 top-48 overflow-hidden bg-${result.color} border-2 border-blue-300 rounded-md`}
+          className={`animate-winner absolute ml-96 top-48 overflow-hidden bg-${result.color} border-2 border-blue-700 rounded-md`}
         >
           <main className="flex whitespace-nowrap gap-2 flex-col justify-center py-5 items-center text-white">
             <h1 className="text-lg">The Winning number is </h1>

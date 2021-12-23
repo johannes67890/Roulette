@@ -5,10 +5,8 @@ import Wheel from "./components//Wheel";
 import Winner from "./components/Winner";
 import { TileType } from "./components/Tiles";
 import History from "./components/History";
-
 const Index = () => {
   const [result, setResult] = useState<TileType | undefined>();
-
   return (
     <React.StrictMode>
       <div className="max-w-7xl mx-auto">

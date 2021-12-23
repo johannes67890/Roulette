@@ -8,7 +8,7 @@ const Button: React.FC<{ Style?: string; onClick?: () => unknown }> = ({
 }) => {
   return (
     <button
-      className={`bg-${Style} border border-black text-white hover:bg-transparent hover:text-black font-bold py-2 px-4 rounded-md`}
+      className={`bg-${Style} border border-black text-white hover:bg-opacity-60 font-bold py-2 px-4 rounded-md`}
       onClick={() => {
         if (onClick) onClick();
       }}
@@ -20,7 +20,7 @@ const Button: React.FC<{ Style?: string; onClick?: () => unknown }> = ({
 
 function Table() {
   return (
-    <div className="w-full">
+    <div className="w-full mt-5">
       <div className="flex gap-2 m-3">
         <Button Style={"green"}>0</Button>
         <div className="grid grid-cols-9 flex-1 grid-rows-3 gap-2">

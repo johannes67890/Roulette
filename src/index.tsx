@@ -5,6 +5,7 @@ import Wheel from "./components//Wheel";
 import Winner from "./components/Winner";
 import { TileType } from "./components/Tiles";
 import History from "./components/History";
+import Table from "./betTable";
 const Index = () => {
   const [result, setResult] = useState<TileType | undefined>();
   return (
@@ -14,6 +15,7 @@ const Index = () => {
         <Winner result={result} />
         <div className="flex flex-row">
           <History result={result} />
+          <Table />
         </div>
       </div>
     </React.StrictMode>

@@ -1,5 +1,6 @@
 import { Tiles, TileType } from "../components/Tiles";
 import $ from "jquery";
+import Button from "../components/Button";
 
 let resultIndex: number;
 const spinTime: number = 7500; //default: 7500
@@ -70,6 +71,26 @@ export function RenderTiles(sets: number) {
     );
   }
   return items;
+}
+
+export function RenderBettingBtn(
+  bettingAmount: number,
+  setBettingAmount: React.Dispatch<React.SetStateAction<number>>
+) {
+  let bets = [50, 100, 250, 1000];
+  let betItems: JSX.Element[] = [];
+  for (let i = 0; i < bets.length; i++) {
+    betItems.push(
+      <Button onClick={() => setBettingAmount((bettingAmount += bets[i]))}>
+        {bets[i]}
+      </Button>
+    );
+  }
+  return betItems;
+}
+
+export function BalancetoStringFromat(format: number) {
+  return format.toLocaleString("ja-JP");
 }
 
 function getCalcPos() {

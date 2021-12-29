@@ -1,24 +1,5 @@
-import React from "react";
-import { Tiles } from "./components/Tiles";
-
-const Button: React.FC<{
-  Style?: string;
-  onClick?: () => unknown;
-}> = ({ children, onClick, Style }) => {
-  return (
-    <button
-      className={`
-      
-        bg-${Style} text-white hover:bg-opacity-60 font-bold py-2 px-4 rounded-md`}
-      onClick={() => {
-        if (onClick) onClick();
-      }}
-    >
-      {children}
-    </button>
-  );
-};
-
+import { Tiles } from "./Tiles";
+import Button from "./Button";
 function Table() {
   return (
     <div className="w-full mt-7">

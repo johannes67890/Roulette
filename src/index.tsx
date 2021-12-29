@@ -5,9 +5,13 @@ import Wheel from "./components//Wheel";
 import Winner from "./components/Winner";
 import { TileType } from "./components/Tiles";
 import History from "./components/History";
-import Table from "./betTable";
+import Table from "./components/betTable";
+import Assets from "./components/Betting";
+
 const Index = () => {
+  const [balance, setBalance] = useState<number>(10000);
   const [result, setResult] = useState<TileType | undefined>();
+
   return (
     <React.StrictMode>
       <div className="max-w-7xl mx-auto">
@@ -17,6 +21,7 @@ const Index = () => {
           <History result={result} />
           <Table />
         </div>
+        <Assets balance={balance} setBalance={setBalance} />
       </div>
     </React.StrictMode>
   );

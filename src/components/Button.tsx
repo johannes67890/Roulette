@@ -1,12 +1,20 @@
 import React from "react";
+import { getRandomId } from "../logic/Animations";
 
 const Button: React.FC<{
-  Style?: string;
+  color?: string;
   onClick?: () => unknown;
-}> = ({ children, onClick, Style }) => {
+  Toggleble?: boolean;
+  btnId?: string;
+}> = ({ children, onClick, color, Toggleble }) => {
+  function addTargetBet(clickedId: string) {
+    console.log(clickedId);
+  }
+
   return (
     <button
-      className={`bg-${Style} text-white hover:bg-opacity-60 font-bold py-2 px-4 rounded-md`}
+      id={getRandomId(2)}
+      className={`bg-${color} text-white hover:bg-opacity-60 font-bold py-2 px-4 rounded-md`}
       onClick={() => {
         if (onClick) onClick();
       }}

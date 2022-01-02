@@ -9,8 +9,9 @@ import Table from "./components/betTable";
 import Assets from "./components/Betting";
 
 const Index = () => {
-  const [balance, setBalance] = useState<number>(10000);
+  const [balance, setBalance] = useState<number>(10000); //start balance
   const [result, setResult] = useState<TileType | undefined>();
+  const [bet, setBet] = useState<TileType | undefined>();
 
   return (
     <React.StrictMode>
@@ -19,9 +20,14 @@ const Index = () => {
         <Winner result={result} />
         <div className="flex flex-row">
           <History result={result} />
-          <Table />
+          <Table setBet={setBet} />
         </div>
-        <Assets balance={balance} setBalance={setBalance} />
+        <Assets
+          balance={balance}
+          setBalance={setBalance}
+          result={result}
+          bet={bet}
+        />
       </div>
     </React.StrictMode>
   );

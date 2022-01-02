@@ -1,6 +1,7 @@
 import { Tiles, TileType } from "../components/Tiles";
 import $ from "jquery";
 import Button from "../components/Button";
+import crypto from "crypto";
 
 let resultIndex: number;
 const spinTime: number = 7500; //default: 7500
@@ -74,18 +75,41 @@ export function RenderTiles(sets: number) {
 }
 
 export function RenderBettingBtn(
+  balance: number,
   bettingAmount: number,
   setBettingAmount: React.Dispatch<React.SetStateAction<number>>
 ) {
-  let bets = [50, 100, 250, 1000];
+  let bets = [25, 50, 100, 250, 1000];
   let betItems: JSX.Element[] = [];
   for (let i = 0; i < bets.length; i++) {
     betItems.push(
-      <Button onClick={() => setBettingAmount((bettingAmount += bets[i]))}>
+      <Button
+        color="blue-700"
+        onClick={() => setBettingAmount((bettingAmount += bets[i]))}
+      >
         {bets[i]}
       </Button>
     );
   }
+  betItems.push(
+    <>
+      <Button
+        color="blue-700"
+        onClick={() => setBettingAmount(bettingAmount / 2)}
+      >
+        1/2
+      </Button>
+      <Button
+        color="blue-700"
+        onClick={() => setBettingAmount(bettingAmount * 2)}
+      >
+        X2
+      </Button>
+      <Button color="blue-700" onClick={() => setBettingAmount(balance)}>
+        Max
+      </Button>
+    </>
+  );
   return betItems;
 }
 
@@ -96,6 +120,10 @@ export function BalancetoStringFromat(format: number) {
 function getCalcPos() {
   resultIndex = getRandomInt(20, 56);
   return Tiles[resultIndex - 20].pos + getRandomInt(-18, 18); // ... + Tiles[resultIndex - 20].pos * getRandomInt(1, 2); // get pos from Tiles and add random miss-postion (for realisme)
+}
+
+export function getRandomId(byteSize: number) {
+  return crypto.randomBytes(byteSize).toString("hex");
 }
 
 function getRandomInt(min: number, max: number) {

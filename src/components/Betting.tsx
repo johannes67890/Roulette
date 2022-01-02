@@ -1,19 +1,27 @@
 import React, { useEffect, useState, FC } from "react";
 import { RenderBettingBtn, BalancetoStringFromat } from "../logic/Animations";
+import { TileType } from "./Tiles";
 
 const Assets: FC<{
   balance: number;
   setBalance: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ balance, setBalance }) => {
+  result: TileType | undefined;
+  bet: TileType | undefined;
+}> = ({ balance, setBalance, result, bet }) => {
   const [bettingAmount, setBettingAmount] = useState<number>(0);
 
   useEffect(() => {
-    if (balance >= bettingAmount) {
-      setBalance(balance - bettingAmount); // someting is wrong here
+    if (
+      result?.val == bet?.val ||
+      (result?.color == bet?.color && balance >= bettingAmount)
+    ) {
+      setBalance((balance += bettingAmount));
+      console.log("You Win");
     } else {
-      console.log("warning");
+      setBalance(bettingAmount - balance);
+      console.log("You lost");
     }
-  }, [bettingAmount]);
+  }, [result]);
 
   return (
     <div className="flex bg-gray-500 gap-2 p-4">
@@ -30,7 +38,7 @@ const Assets: FC<{
         placeholder="Enter betting amount"
         onChange={(e) => setBettingAmount(parseInt(e.target.value))}
       />
-      {RenderBettingBtn(bettingAmount, setBettingAmount)}
+      {RenderBettingBtn(balance, bettingAmount, setBettingAmount)}
     </div>
   );
 };

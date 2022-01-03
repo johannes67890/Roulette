@@ -11,7 +11,7 @@ import Assets from "./components/Betting";
 const Index = () => {
   const [balance, setBalance] = useState<number>(10000); //start balance
   const [result, setResult] = useState<TileType | undefined>();
-  const [bet, setBet] = useState<TileType | undefined>();
+  const [bet, setBet] = useState<TileType | undefined | Array<TileType>>();
   const [btnId, setBtnId] = useState<string | undefined>();
 
   return (

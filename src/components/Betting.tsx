@@ -6,7 +6,7 @@ const Assets: FC<{
   balance: number;
   setBalance: React.Dispatch<React.SetStateAction<number>>;
   result: TileType | undefined;
-  bet: TileType | undefined;
+  bet: TileType | Array<TileType> | undefined;
   btnId: string | undefined;
 }> = ({ balance, setBalance, result, bet, btnId }) => {
   let [bettingAmount, setBettingAmount] = useState<number>(0);
@@ -27,12 +27,23 @@ const Assets: FC<{
           console.log("You lost on table");
         }
         break;
+
       case "red":
-        if (result?.color === bet?.color && balance >= bettingAmount) {
+      case "black":
+        if (result?.color === bet?.color) {
           setBalance((balance += bettingAmount));
-          console.log("You Win on red");
+          console.log("You Win on the color you picked");
         }
         break;
+
+      case "odd":
+      case "even":
+        // if (result?.val % 2 == 0 || result?.val % 2) {
+        //   setBalance((balance += bettingAmount));
+        //   console.log("You Win on the odd or even");
+        // }
+        break;
+
       default:
         console.log("something went wrong!");
         break;

@@ -126,6 +126,62 @@ export function getRandomId(byteSize: number) {
   return crypto.randomBytes(byteSize).toString("hex");
 }
 
+export function getTwelveNum(row: number) {
+  const first12: TileType[] = [
+    { val: 32, pos: 0, color: "" },
+    { val: 15, pos: 0, color: "" },
+    { val: 19, pos: 0, color: "" },
+    { val: 6, pos: 0, color: "" },
+    { val: 27, pos: 0, color: "" },
+    { val: 13, pos: 0, color: "" },
+    { val: 5, pos: 0, color: "" },
+    { val: 24, pos: 0, color: "" },
+    { val: 16, pos: 0, color: "" },
+    { val: 22, pos: 0, color: "" },
+    { val: 18, pos: 0, color: "" },
+    { val: 29, pos: 0, color: "" },
+  ];
+  const second12: TileType[] = [
+    { val: 4, pos: 0, color: "" },
+    { val: 21, pos: 0, color: "" },
+    { val: 2, pos: 0, color: "" },
+    { val: 36, pos: 0, color: "" },
+    { val: 11, pos: 0, color: "" },
+    { val: 30, pos: 0, color: "" },
+    { val: 33, pos: 0, color: "" },
+    { val: 1, pos: 0, color: "" },
+    { val: 20, pos: 0, color: "" },
+    { val: 7, pos: 0, color: "" },
+    { val: 28, pos: 0, color: "" },
+    { val: 12, pos: 0, color: "" },
+  ];
+  const third12: TileType[] = [
+    { val: 25, pos: 0, color: "" },
+    { val: 17, pos: 0, color: "" },
+    { val: 34, pos: 0, color: "" },
+    { val: 8, pos: 0, color: "" },
+    { val: 23, pos: 0, color: "" },
+    { val: 10, pos: 0, color: "" },
+    { val: 14, pos: 0, color: "" },
+    { val: 31, pos: 0, color: "" },
+    { val: 9, pos: 0, color: "" },
+    { val: 35, pos: 0, color: "" },
+    { val: 3, pos: 0, color: "" },
+    { val: 26, pos: 0, color: "" },
+  ];
+
+  switch (row) {
+    case 1:
+      return first12;
+
+    case 2:
+      return second12;
+
+    case 3:
+      return third12;
+  }
+}
+
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);

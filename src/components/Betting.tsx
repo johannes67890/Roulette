@@ -7,20 +7,40 @@ const Assets: FC<{
   setBalance: React.Dispatch<React.SetStateAction<number>>;
   result: TileType | undefined;
   bet: TileType | undefined;
-}> = ({ balance, setBalance, result, bet }) => {
-  const [bettingAmount, setBettingAmount] = useState<number>(0);
+  btnId: string | undefined;
+}> = ({ balance, setBalance, result, bet, btnId }) => {
+  let [bettingAmount, setBettingAmount] = useState<number>(0);
 
   useEffect(() => {
-    if (
-      result?.val == bet?.val ||
-      (result?.color == bet?.color && balance >= bettingAmount)
-    ) {
-      setBalance((balance += bettingAmount));
-      console.log("You Win");
-    } else {
-      setBalance(bettingAmount - balance);
-      console.log("You lost");
+    console.log("result inside:", result?.val);
+    console.log("bet:", bet?.val);
+    console.log("balance:", balance);
+    console.log("balance:", bettingAmount);
+
+    switch (btnId) {
+      case "table":
+        if (result?.val === bet?.val) {
+          setBalance((balance += bettingAmount * 14));
+          console.log("You Win on table");
+        } else {
+          setBalance((balance -= bettingAmount));
+          console.log("You lost on table");
+        }
+        break;
+      case "red":
+        if (result?.color === bet?.color && balance >= bettingAmount) {
+          setBalance((balance += bettingAmount));
+          console.log("You Win on red");
+        }
+        break;
+      default:
+        console.log("something went wrong!");
+        break;
     }
+
+    return () => {
+      setBettingAmount(0);
+    };
   }, [result]);
 
   return (
@@ -36,7 +56,11 @@ const Assets: FC<{
         className="bg-gray-500 appearance-none disabled:bg-blue-200 py-3 px-2 h-5 text-white"
         // disabled={balance < parseInt(bettingAmount) ? true : false}
         placeholder="Enter betting amount"
-        onChange={(e) => setBettingAmount(parseInt(e.target.value))}
+        onChange={(e) => {
+          parseInt(e.target.value) >= balance
+            ? console.log("over limit")
+            : setBettingAmount(parseInt(e.target.value));
+        }}
       />
       {RenderBettingBtn(balance, bettingAmount, setBettingAmount)}
     </div>

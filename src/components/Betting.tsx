@@ -6,49 +6,64 @@ const Assets: FC<{
   balance: number;
   setBalance: React.Dispatch<React.SetStateAction<number>>;
   result: TileType | undefined;
-  bet: TileType | Array<TileType> | undefined;
+  bet: Array<TileType> | undefined;
   btnId: string | undefined;
 }> = ({ balance, setBalance, result, bet, btnId }) => {
   let [bettingAmount, setBettingAmount] = useState<number>(0);
 
   useEffect(() => {
     console.log("result inside:", result?.val);
-    console.log("bet:", bet?.val);
+    console.log("bet:", bet);
     console.log("balance:", balance);
     console.log("balance:", bettingAmount);
 
-    switch (btnId) {
-      case "table":
-        if (result?.val === bet?.val) {
-          setBalance((balance += bettingAmount * 14));
-          console.log("You Win on table");
-        } else {
-          setBalance((balance -= bettingAmount));
-          console.log("You lost on table");
-        }
-        break;
+    if (result != undefined && bet != undefined) {
+      switch (btnId) {
+        case "table":
+          if (bet.includes(result)) {
+            setBalance((balance += bettingAmount * 14));
+            console.log("You Win on table");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You lost on table");
+          }
+          break;
 
-      case "red":
-      case "black":
-        if (result?.color === bet?.color) {
-          setBalance((balance += bettingAmount));
-          console.log("You Win on the color you picked");
-        }
-        break;
+        case "red":
+        case "black":
+          if (result.color === bet[0].color) {
+            setBalance((balance += bettingAmount));
+            console.log("You Win on the color you picked");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You Lost on the color you picked");
+          }
+          break;
 
-      case "odd":
-      case "even":
-        // if (result?.val % 2 == 0 || result?.val % 2) {
-        //   setBalance((balance += bettingAmount));
-        //   console.log("You Win on the odd or even");
-        // }
-        break;
+        case "odd":
+          if (result.val % 2 != 0) {
+            setBalance((balance += bettingAmount));
+            console.log("You Win on odd");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You Lost on odd ");
+          }
+          break;
+        case "even":
+          if (result.val % 2 == 0) {
+            setBalance((balance += bettingAmount));
+            console.log("You Win on even");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You Lost on even");
+          }
+          break;
 
-      default:
-        console.log("something went wrong!");
-        break;
+        default:
+          console.log("something went wrong!");
+          break;
+      }
     }
-
     return () => {
       setBettingAmount(0);
     };

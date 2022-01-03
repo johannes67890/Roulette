@@ -5,9 +5,7 @@ import { TileType } from "./Tiles";
 import { getTwelveNum } from "../logic/Animations";
 
 const Table: FC<{
-  setBet: React.Dispatch<
-    React.SetStateAction<TileType | Array<TileType> | undefined>
-  >;
+  setBet: React.Dispatch<React.SetStateAction<Array<TileType> | undefined>>;
   setBtnId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }> = ({ setBet, setBtnId }) => {
   return (
@@ -17,7 +15,7 @@ const Table: FC<{
           {Tiles.slice(1).map((value, index) => (
             <Button
               onClick={() => {
-                setBet(value);
+                setBet([value]);
                 setBtnId("table");
               }}
               key={index}
@@ -65,7 +63,7 @@ const Table: FC<{
         >
           Red
         </Button>
-        <Button color={"green"} onClick={() => setBet(Tiles[0])}>
+        <Button color={"green"} onClick={() => setBet([Tiles[0]])}>
           0
         </Button>
         <Button

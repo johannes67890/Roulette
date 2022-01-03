@@ -67,7 +67,7 @@ const Assets: FC<{
     return () => {
       setBettingAmount(0);
     };
-  }, [result]);
+  }, [result]); // fix bug and force render effect
 
   return (
     <div className="flex bg-gray-500 gap-2 p-4">

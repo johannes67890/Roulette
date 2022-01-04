@@ -46,9 +46,11 @@ export function CusorAnimation(
 ) {
   $("button").css("cursor", "not-allowed");
   $("button").prop("disabled", true);
+  $("input").prop("disabled", true);
   setTimeout(() => {
     $("button").css("cursor", "pointer");
     $("button").prop("disabled", false);
+    $("input").prop("disabled", false);
     $("#window").css({
       right: "0",
     });

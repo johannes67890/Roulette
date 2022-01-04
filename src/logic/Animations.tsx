@@ -128,46 +128,190 @@ export function getRandomId(byteSize: number) {
 
 export function getTwelveNum(row: number) {
   const first12: TileType[] = [
-    { val: 32, pos: 0, color: "" },
-    { val: 15, pos: 0, color: "" },
-    { val: 19, pos: 0, color: "" },
-    { val: 6, pos: 0, color: "" },
-    { val: 27, pos: 0, color: "" },
-    { val: 13, pos: 0, color: "" },
-    { val: 5, pos: 0, color: "" },
-    { val: 24, pos: 0, color: "" },
-    { val: 16, pos: 0, color: "" },
-    { val: 22, pos: 0, color: "" },
-    { val: 18, pos: 0, color: "" },
-    { val: 29, pos: 0, color: "" },
+    {
+      val: 32,
+      color: "red",
+      pos: 1208,
+    },
+    {
+      val: 15,
+      color: "black",
+      pos: 1256,
+    },
+    {
+      val: 19,
+      color: "red",
+      pos: 1304,
+    },
+    {
+      val: 6,
+      color: "black",
+      pos: 1640,
+    },
+    {
+      val: 27,
+      color: "red",
+      pos: 1688,
+    },
+    {
+      val: 13,
+      color: "black",
+      pos: 1736,
+    },
+    {
+      val: 5,
+      color: "red",
+      pos: 2072,
+    },
+    {
+      val: 24,
+      color: "black",
+      pos: 2120,
+    },
+    {
+      val: 16,
+      color: "red",
+      pos: 2168,
+    },
+    {
+      val: 22,
+      color: "black",
+      pos: 2504,
+    },
+    {
+      val: 18,
+      color: "red",
+      pos: 2552,
+    },
+    {
+      val: 29,
+      color: "black",
+      pos: 2600,
+    },
   ];
   const second12: TileType[] = [
-    { val: 4, pos: 0, color: "" },
-    { val: 21, pos: 0, color: "" },
-    { val: 2, pos: 0, color: "" },
-    { val: 36, pos: 0, color: "" },
-    { val: 11, pos: 0, color: "" },
-    { val: 30, pos: 0, color: "" },
-    { val: 33, pos: 0, color: "" },
-    { val: 1, pos: 0, color: "" },
-    { val: 20, pos: 0, color: "" },
-    { val: 7, pos: 0, color: "" },
-    { val: 28, pos: 0, color: "" },
-    { val: 12, pos: 0, color: "" },
+    {
+      val: 4,
+      color: "black",
+      pos: 1352,
+    },
+    {
+      val: 21,
+      color: "red",
+      pos: 1400,
+    },
+    {
+      val: 2,
+      color: "black",
+      pos: 1448,
+    },
+    {
+      val: 36,
+      color: "red",
+      pos: 1784,
+    },
+    {
+      val: 11,
+      color: "black",
+      pos: 1832,
+    },
+    {
+      val: 30,
+      color: "red",
+      pos: 1880,
+    },
+    {
+      val: 33,
+      color: "black",
+      pos: 2216,
+    },
+    {
+      val: 1,
+      color: "red",
+      pos: 2264,
+    },
+    {
+      val: 20,
+      color: "black",
+      pos: 2312,
+    },
+    {
+      val: 7,
+      color: "red",
+      pos: 2648,
+    },
+    {
+      val: 28,
+      color: "black",
+      pos: 2696,
+    },
+    {
+      val: 12,
+      color: "red",
+      pos: 2744,
+    },
   ];
   const third12: TileType[] = [
-    { val: 25, pos: 0, color: "" },
-    { val: 17, pos: 0, color: "" },
-    { val: 34, pos: 0, color: "" },
-    { val: 8, pos: 0, color: "" },
-    { val: 23, pos: 0, color: "" },
-    { val: 10, pos: 0, color: "" },
-    { val: 14, pos: 0, color: "" },
-    { val: 31, pos: 0, color: "" },
-    { val: 9, pos: 0, color: "" },
-    { val: 35, pos: 0, color: "" },
-    { val: 3, pos: 0, color: "" },
-    { val: 26, pos: 0, color: "" },
+    {
+      val: 25,
+      color: "red",
+      pos: 1496,
+    },
+    {
+      val: 17,
+      color: "black",
+      pos: 1544,
+    },
+    {
+      val: 34,
+      color: "red",
+      pos: 1592,
+    },
+    {
+      val: 8,
+      color: "black",
+      pos: 1928,
+    },
+    {
+      val: 23,
+      color: "red",
+      pos: 1976,
+    },
+    {
+      val: 10,
+      color: "black",
+      pos: 2024,
+    },
+    {
+      val: 14,
+      color: "red",
+      pos: 2360,
+    },
+    {
+      val: 31,
+      color: "black",
+      pos: 2408,
+    },
+    {
+      val: 9,
+      color: "red",
+      pos: 2456,
+    },
+    {
+      val: 35,
+      color: "black",
+      pos: 2792,
+    },
+    {
+      val: 3,
+      color: "red",
+      pos: 2840,
+    },
+    {
+      val: 26,
+      color: "black",
+      pos: 2888,
+    },
   ];
 
   switch (row) {

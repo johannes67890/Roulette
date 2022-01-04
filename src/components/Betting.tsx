@@ -17,7 +17,7 @@ const Assets: FC<{
     console.log("balance:", balance);
     console.log("balance:", bettingAmount);
 
-    if (result != undefined && bet != undefined) {
+    if (result !== undefined && bet !== undefined) {
       switch (btnId) {
         case "table":
           if (bet.includes(result)) {
@@ -28,7 +28,15 @@ const Assets: FC<{
             console.log("You lost on table");
           }
           break;
-
+        case "green":
+          if (bet.includes(result)) {
+            setBalance((balance += bettingAmount * 14));
+            console.log("You Win on Green");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You lost on Green");
+          }
+          break;
         case "red":
         case "black":
           if (result.color === bet[0].color) {
@@ -41,7 +49,7 @@ const Assets: FC<{
           break;
 
         case "odd":
-          if (result.val % 2 != 0) {
+          if (result.val % 2 !== 0) {
             setBalance((balance += bettingAmount));
             console.log("You Win on odd");
           } else {
@@ -50,7 +58,7 @@ const Assets: FC<{
           }
           break;
         case "even":
-          if (result.val % 2 == 0) {
+          if (result.val % 2 === 0) {
             setBalance((balance += bettingAmount));
             console.log("You Win on even");
           } else {
@@ -58,7 +66,18 @@ const Assets: FC<{
             console.log("You Lost on even");
           }
           break;
+        case "1st":
+        case "2nd":
+        case "3rd":
+          if (bet.includes(result)) {
+            setBalance((balance += bettingAmount * 3));
+            console.log("You Win on one of the twelve");
+          } else {
+            setBalance((balance -= bettingAmount));
+            console.log("You lose on one of the twelve");
+          }
 
+          break;
         default:
           console.log("something went wrong!");
           break;

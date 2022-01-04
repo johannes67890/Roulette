@@ -29,9 +29,33 @@ const Table: FC<{
       </div>
 
       <div className="m-3 grid grid-cols-3 grid-rows-1 gap-2">
-        <Button color={"black"}>1st Twelve</Button>
-        <Button color={"black"}>2nd Twelve</Button>
-        <Button color={"black"}>3rd Twelve</Button>
+        <Button
+          color={"black"}
+          onClick={() => {
+            setBet(getTwelveNum(1));
+            setBtnId("1st");
+          }}
+        >
+          1st Twelve
+        </Button>
+        <Button
+          color={"black"}
+          onClick={() => {
+            setBet(getTwelveNum(2));
+            setBtnId("2nd");
+          }}
+        >
+          2nd Twelve
+        </Button>
+        <Button
+          color={"black"}
+          onClick={() => {
+            setBet(getTwelveNum(3));
+            setBtnId("3rd");
+          }}
+        >
+          3rd Twelve
+        </Button>
       </div>
       <div className="m-3 grid grid-cols-2 grid-rows-1 gap-2">
         <Button
@@ -46,7 +70,7 @@ const Table: FC<{
         <Button
           color={"black"}
           onClick={() => {
-            setBet(Tiles.slice(1).filter((e) => e.val % 2 == 0));
+            setBet(Tiles.slice(1).filter((e) => e.val % 2 === 0));
             setBtnId("even");
           }}
         >
@@ -57,19 +81,25 @@ const Table: FC<{
         <Button
           color={"red"}
           onClick={() => {
-            setBet(Tiles.filter((e) => e.color == "red"));
+            setBet(Tiles.filter((e) => e.color === "red"));
             setBtnId("red");
           }}
         >
           Red
         </Button>
-        <Button color={"green"} onClick={() => setBet([Tiles[0]])}>
+        <Button
+          color={"green"}
+          onClick={() => {
+            setBet([Tiles[0]]);
+            setBtnId("green");
+          }}
+        >
           0
         </Button>
         <Button
           color={"black"}
           onClick={() => {
-            setBet(Tiles.filter((e) => e.color == "black"));
+            setBet(Tiles.filter((e) => e.color === "black"));
             setBtnId("black");
           }}
         >

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, FC } from "react";
-import { RenderBettingBtn, BalancetoStringFromat } from "../logic/Animations";
+import { BalancetoStringFromat } from "../logic/Data";
+import { RenderBettingBtn } from "../logic/Renders";
 import { TileType } from "./Tiles";
 
 const Assets: FC<{
@@ -11,7 +12,18 @@ const Assets: FC<{
 }> = ({ balance, setBalance, result, bet, btnId }) => {
   let [bettingAmount, setBettingAmount] = useState<number>(0);
 
+  function IfSetBalance(arg: boolean, multiplyer: number, feedback?: string) {
+    if (arg) {
+      setBalance((balance += bettingAmount * multiplyer));
+      console.log(`You win on ${feedback}`);
+    } else {
+      setBalance((balance -= bettingAmount));
+      console.log(`You lose on ${feedback}`);
+    }
+  }
+
   useEffect(() => {
+    //feedback for debugging and control
     console.log("result inside:", result?.val);
     console.log("bet:", bet);
     console.log("balance:", balance);
@@ -20,71 +32,34 @@ const Assets: FC<{
     if (result !== undefined && bet !== undefined) {
       switch (btnId) {
         case "table":
-          if (bet.includes(result)) {
-            setBalance((balance += bettingAmount * 14));
-            console.log("You Win on table");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You lost on table");
-          }
+          IfSetBalance(bet.includes(result), 14);
           break;
         case "green":
-          if (bet.includes(result)) {
-            setBalance((balance += bettingAmount * 14));
-            console.log("You Win on Green");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You lost on Green");
-          }
+          IfSetBalance(bet.includes(result), 14, "green");
           break;
         case "red":
         case "black":
-          if (result.color === bet[0].color) {
-            setBalance((balance += bettingAmount));
-            console.log("You Win on the color you picked");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You Lost on the color you picked");
-          }
+          IfSetBalance(result.color === bet[0].color, 0, "color");
           break;
-
         case "odd":
-          if (result.val % 2 !== 0) {
-            setBalance((balance += bettingAmount));
-            console.log("You Win on odd");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You Lost on odd ");
-          }
+          IfSetBalance(result.val % 2 !== 0, 14, "odd");
           break;
         case "even":
-          if (result.val % 2 === 0) {
-            setBalance((balance += bettingAmount));
-            console.log("You Win on even");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You Lost on even");
-          }
+          IfSetBalance(result.val % 2 === 0, 14, "even");
           break;
         case "1st":
         case "2nd":
         case "3rd":
-          if (bet.includes(result)) {
-            setBalance((balance += bettingAmount * 3));
-            console.log("You Win on one of the twelve");
-          } else {
-            setBalance((balance -= bettingAmount));
-            console.log("You lose on one of the twelve");
-          }
-
+          IfSetBalance(bet.includes(result), 3, "twelve");
           break;
         default:
+          //default error
           console.log("something went wrong!");
           break;
       }
     }
     return () => {
-      setBettingAmount(0);
+      setBettingAmount(0); //cleanup
     };
   }, [result]); // fix bug and force render effect
 

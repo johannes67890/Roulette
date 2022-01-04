@@ -1,5 +1,4 @@
 module.exports = {
-
   purge: ["./src/**/*.{ts,tsx}", "./public/index.html"],
 
   darkMode: false, // or 'media' or 'class'
@@ -12,9 +11,9 @@ module.exports = {
         },
         winner: {
           "0%": { width: "3px", height: "60px", opacity: "0", display: "none" },
-          "30%": { width: "3px", height: "240px", opacity: "1" },
-          "50%": { width: "480px", height: "240px", opacity: "1" },
-          "100%": { width: "480px", height: "240px", opacity: "1" },
+          "30%": { width: "3px", height: "250px", opacity: "1" },
+          "50%": { width: "480px", height: "250px", opacity: "1" },
+          "100%": { width: "480px", height: "250px", opacity: "1" },
         },
       },
       animation: {

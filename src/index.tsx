@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { TileType } from "./components/Tiles";
 import Wheel from "./components//Wheel";
 import Winner from "./components/Winner";
-import { TileType } from "./components/Tiles";
 import History from "./components/History";
-import Table from "./components/betTable";
+import BetTable from "./components/BetTable";
 import Assets from "./components/Betting";
 
 const Index = () => {
@@ -18,10 +18,10 @@ const Index = () => {
     <React.StrictMode>
       <div className="max-w-7xl mx-auto">
         <Wheel setResult={setResult} />
-        <Winner result={result} />
+        <Winner result={result} bet={bet} />
         <div className="flex flex-row">
           <History result={result} />
-          <Table setBet={setBet} setBtnId={setBtnId} />
+          <BetTable setBet={setBet} setBtnId={setBtnId} />
         </div>
         <Assets
           balance={balance}

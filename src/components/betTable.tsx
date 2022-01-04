@@ -2,9 +2,9 @@ import { Tiles } from "./Tiles";
 import { FC } from "react";
 import Button from "./Button";
 import { TileType } from "./Tiles";
-import { getTwelveNum } from "../logic/Animations";
+import { getTwelveNum } from "../logic/Data";
 
-const Table: FC<{
+const BetTable: FC<{
   setBet: React.Dispatch<React.SetStateAction<Array<TileType> | undefined>>;
   setBtnId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }> = ({ setBet, setBtnId }) => {
@@ -110,4 +110,4 @@ const Table: FC<{
   );
 };
 
-export default Table;
+export default BetTable;

@@ -5,7 +5,7 @@ import {
   RenderTiles,
   Spin,
   WinningNumAnimation,
-} from "../logic/Animations";
+} from "../logic/Renders";
 
 const Wheel: FC<{
   setResult: React.Dispatch<React.SetStateAction<TileType | undefined>>;

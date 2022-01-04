@@ -33,7 +33,6 @@ const Wheel: FC<{
         </div>
         <button
           id="spin"
-          disabled={IsSpin === true ? true : false}
           onClick={() => {
             Spin(setResult, IsSpin, setIsSpin);
             WinningNumAnimation();

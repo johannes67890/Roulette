@@ -44,9 +44,11 @@ export function WinningNumAnimation() {
 export function CusorAnimation(
   SetIsState: React.Dispatch<React.SetStateAction<boolean>>
 ) {
-  $("#spin").css("cursor", "not-allowed");
+  $("button").css("cursor", "not-allowed");
+  $("button").prop("disabled", true);
   setTimeout(() => {
-    $("#spin").css("cursor", "pointer");
+    $("button").css("cursor", "pointer");
+    $("button").prop("disabled", false);
     $("#window").css({
       right: "0",
     });

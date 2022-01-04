@@ -1,7 +1,7 @@
 import { useState, FC } from "react";
 import { TileType } from "./Tiles";
 import {
-  CusorAnimation,
+  CusorDisabledAnimation,
   RenderTiles,
   Spin,
   WinningNumAnimation,
@@ -36,7 +36,7 @@ const Wheel: FC<{
           onClick={() => {
             Spin(setResult, IsSpin, setIsSpin);
             WinningNumAnimation();
-            CusorAnimation(setIsSpin);
+            CusorDisabledAnimation(setIsSpin);
           }}
           className="flex mx-auto px-5 py-1.5 my-2  text-white bg-blue-700 rounded-lg hover:bg-opacity-60"
         >

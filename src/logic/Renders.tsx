@@ -41,7 +41,7 @@ export function WinningNumAnimation() {
   }, intermissionTime);
 }
 
-export function CusorAnimation(
+export function CusorDisabledAnimation(
   SetIsState: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   $("button").css("cursor", "not-allowed");

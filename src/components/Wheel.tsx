@@ -3,14 +3,14 @@ import { TileType } from "./Tiles";
 import {
   CusorDisabledAnimation,
   RenderTiles,
-  Spin,
+  RollWheel,
   WinningNumAnimation,
 } from "../logic/Renders";
 
 const Wheel: FC<{
   setResult: React.Dispatch<React.SetStateAction<TileType | undefined>>;
 }> = ({ setResult }) => {
-  const [IsSpin, setIsSpin] = useState<boolean>(false);
+  const [Roll, setIsRoll] = useState<boolean>(false);
   return (
     <>
       <div className="overflow-hidden mt-20">
@@ -27,22 +27,22 @@ const Wheel: FC<{
             overflow: "hidden",
           }}
         >
-          <ul className={IsSpin === true ? "" : "flex animate-roll"}>
+          <ul className={Roll === true ? "" : "flex animate-roll"}>
             {RenderTiles(3) /* render tiles fra function */}
           </ul>
         </div>
         <button
-          id="spin"
+          id="Roll"
           onClick={() => {
-            Spin(setResult, IsSpin, setIsSpin);
+            RollWheel(setResult, Roll, setIsRoll);
             WinningNumAnimation();
-            CusorDisabledAnimation(setIsSpin);
+            CusorDisabledAnimation(setIsRoll);
           }}
           className="flex mx-auto px-5 py-1.5 my-2  text-white bg-blue-700 rounded-lg hover:bg-opacity-60"
         >
-          {IsSpin === true ? (
+          {Roll === true ? (
             <svg
-              className="animate-spin mt-1 mr-2 h-5 w-5 text-white"
+              className="animate-roll mt-1 mr-2 h-5 w-5 text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

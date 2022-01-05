@@ -3,11 +3,11 @@ import $ from "jquery";
 import Button from "../components/Button";
 import { getCalcPos, resultIndex } from "./Data";
 
-const spinTime: number = 7500; //default: 7500
-const intermissionTime: number = 9500; // default: 9500
+const RoolTime: number = 7500; //default: 7500
+const IntermissionTime: number = 9500; // default: 9500
 const CursorDisabledTime: number = 12000; // default: 12000
 
-export function Spin(
+export function RollWheel(
   setResult: React.Dispatch<React.SetStateAction<TileType | undefined>>,
   IsState: boolean,
   SetIsState: React.Dispatch<React.SetStateAction<boolean>>
@@ -23,12 +23,12 @@ export function Spin(
     {
       right: getCalcPos(),
     },
-    spinTime //animation time
+    RoolTime //animation time
   );
   setTimeout(() => {
     //set result to global state after animation is done
     return setResult(Tiles[resultIndex - 20]);
-  }, intermissionTime);
+  }, IntermissionTime);
 }
 
 export function WinningNumAnimation() {
@@ -38,7 +38,7 @@ export function WinningNumAnimation() {
   setTimeout(() => {
     $("#winner").addClass("animate-winner"); //add class to play animation
     $("#winner").show(); // show element
-  }, intermissionTime);
+  }, IntermissionTime);
 }
 
 export function CusorDisabledAnimation(

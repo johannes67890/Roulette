@@ -42,7 +42,7 @@ const Wheel: FC<{
         >
           {Roll === true ? (
             <svg
-              className="animate-roll mt-1 mr-2 h-5 w-5 text-white"
+              className="animate-spin mt-1 mr-2 h-5 w-5 text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

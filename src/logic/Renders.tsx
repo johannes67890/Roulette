@@ -82,15 +82,19 @@ export function RenderBettingBtn(
   bettingAmount: number,
   setBettingAmount: React.Dispatch<React.SetStateAction<number>>
 ) {
-  let bets = [25, 50, 100, 250, 1000];
+  let bets = [10, 25, 50, 100, 250, 1000];
   let betItems: JSX.Element[] = [];
   for (let i = 0; i < bets.length; i++) {
     betItems.push(
       <Button
         color="blue-700"
-        onClick={() => setBettingAmount((bettingAmount += bets[i]))}
+        onClick={() => {
+          if (bettingAmount + bets[i] < balance) {
+            setBettingAmount((bettingAmount += bets[i]));
+          } else alert("Sorry you are over your balance limit!");
+        }}
       >
-        {bets[i]}
+        {bets[i]} $
       </Button>
     );
   }
@@ -104,7 +108,11 @@ export function RenderBettingBtn(
       </Button>
       <Button
         color="blue-700"
-        onClick={() => setBettingAmount(bettingAmount * 2)}
+        onClick={() => {
+          if (bettingAmount < balance) {
+            setBettingAmount(bettingAmount * 2);
+          } else alert("Sorry you are over your balance limit!");
+        }}
       >
         X2
       </Button>

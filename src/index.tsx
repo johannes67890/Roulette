@@ -24,6 +24,7 @@ const Index = () => {
           <BetTable setBet={setBet} setBtnId={setBtnId} />
         </div>
         <Assets
+          setBet={setBet}
           balance={balance}
           setBalance={setBalance}
           result={result}

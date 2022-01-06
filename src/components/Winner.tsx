@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { RenderBettingTiles } from "../logic/Renders";
 import { TileType } from "./Tiles";
 
 const Winner: FC<{
@@ -19,17 +20,7 @@ const Winner: FC<{
               <span className="text-xl mx-auto mb-2 left-1/2 justify-center align-middle">
                 Your bet was the numbers
               </span>
-              <ul className="flex-nowrap w-72 inline gap-2 text-xl flex-row">
-                {bet?.map((value) => {
-                  return (
-                    <li
-                      className={`m-1 text-center rounded-lg float-left font-light text-lg border w-6 p-0.5 bg-${value.color} drop-shadow-xl shadow-xl border-white`}
-                    >
-                      {value.val}
-                    </li>
-                  );
-                })}
-              </ul>
+              {RenderBettingTiles(bet)}
             </div>
           </main>
         </div>

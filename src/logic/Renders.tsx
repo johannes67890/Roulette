@@ -76,6 +76,27 @@ export function RenderTiles(sets: number) {
   }
   return items;
 }
+export function RenderBettingTiles(
+  bets: TileType[] | undefined,
+  style?: React.CSSProperties | undefined
+) {
+  return (
+    <>
+      <ul className="flex-nowrap w-72 inline gap-2 text-xl flex-row">
+        {bets?.map((value) => {
+          return (
+            <li
+              style={style}
+              className={`m-1 text-center rounded-lg float-left font-light text-lg border w-6 p-0.5 bg-${value.color} drop-shadow-xl shadow-xl border-white`}
+            >
+              {value.val}
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+}
 
 export function RenderBettingBtn(
   balance: number,

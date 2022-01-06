@@ -1,19 +1,19 @@
 import { useState, FC } from "react";
 import { TileType } from "./Tiles";
 import {
-  CusorAnimation,
+  CusorDisabledAnimation,
   RenderTiles,
-  Spin,
+  RollWheel,
   WinningNumAnimation,
-} from "../logic/Animations";
+} from "../logic/Renders";
 
 const Wheel: FC<{
   setResult: React.Dispatch<React.SetStateAction<TileType | undefined>>;
 }> = ({ setResult }) => {
-  const [IsSpin, setIsSpin] = useState<boolean>(false);
+  const [Roll, setIsRoll] = useState<boolean>(false);
   return (
     <>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden mt-20">
         <div
           style={{ width: "640px" }}
           className="absolute border-r-4 h-12 max-w-7xl z-10 border-blue-600"
@@ -27,21 +27,20 @@ const Wheel: FC<{
             overflow: "hidden",
           }}
         >
-          <ul className={IsSpin === true ? "" : "flex animate-roll"}>
+          <ul className={Roll === true ? "" : "flex animate-roll"}>
             {RenderTiles(3) /* render tiles fra function */}
           </ul>
         </div>
         <button
-          id="spin"
-          disabled={IsSpin === true ? true : false}
+          id="Roll"
           onClick={() => {
-            Spin(setResult, IsSpin, setIsSpin);
+            RollWheel(setResult, Roll, setIsRoll);
             WinningNumAnimation();
-            CusorAnimation(setIsSpin);
+            CusorDisabledAnimation(setIsRoll);
           }}
-          className="flex mx-auto px-2 py-1 border-2 text-white bg-blue-700 rounded-lg hover:bg-blue-400"
+          className="flex mx-auto px-5 py-1.5 my-2  text-white bg-blue-700 rounded-lg hover:bg-opacity-60"
         >
-          {IsSpin === true ? (
+          {Roll === true ? (
             <svg
               className="animate-spin mt-1 mr-2 h-5 w-5 text-white"
               xmlns="http://www.w3.org/2000/svg"

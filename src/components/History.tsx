@@ -12,9 +12,9 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
 
   return (
     <aside className="flex flex-col w-32 h-96">
-      <h2 className="mx-auto p-2 font-bold">History</h2>
-      <ul className="border border-blue-300 rounded-md overflow-y-hidden h-full">
-        <span className="animate-bounce-slow pt-3 flex items-center justify-center">
+      <h2 className="mx-auto p-2 font-bold text-white">History</h2>
+      <ul className="border border-blue-700 rounded-md overflow-y-hidden h-full">
+        <span className="animate-bounce-slow pt-3 text-white flex items-center justify-center">
           <svg
             className="w-6 h-6"
             fill="none"
@@ -30,7 +30,7 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
         {history.map((value, key) => {
           return (
             <li
-              className={`bg-${value.color} border-b text-center rounded mx-0.5 mb-px`}
+              className={`bg-${value.color} text-center rounded mx-0.5 mb-0.5`}
               key={key}
             >
               <span className="text-white">{value.val} </span>

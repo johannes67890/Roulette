@@ -4,13 +4,13 @@
 
 #### School project (_Game in 2D_)
 
-![preview](src/static/preview.png "Website Preview")
+![preview](src/static/Preview.png "Website Preview")
 
 ## Frameworks & 3rd party libraries used
 
-####- React
-####- Tailwindcss
-####- Jquery
+#### - React
+#### - Tailwindcss
+#### - Jquery
 
 ## How to build and run the program
 

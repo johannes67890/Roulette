@@ -11,27 +11,27 @@ const Assets: FC<{
   bet: Array<TileType> | undefined;
   btnId: string | undefined;
 }> = ({ balance, setBalance, result, bet, btnId, setBet }) => {
-  let [bettingAmount, setBettingAmount] = useState<number>(0);
+  let [bettingAmount, setBettingAmount] = useState<number>(0); //users betting amount
 
+  //function to check if bet includes the result result
   function IfSetBalance(arg: boolean, multiplyer: number, feedback?: string) {
     if (arg) {
-      setBalance((balance += bettingAmount * multiplyer));
+      setBalance((balance += bettingAmount * multiplyer)); //sets balance to positive bettingAmount if bet includes the result result
       console.log(`You win on ${feedback}`);
     } else {
-      setBalance((balance -= bettingAmount));
+      setBalance((balance -= bettingAmount)); //sets balance to negativ bettingAmount if bet includes the result result
       console.log(`You lose on ${feedback}`);
     }
   }
 
   useEffect(() => {
-    //feedback for debugging and control
-    console.log("result inside:", result?.val);
-    console.log("bet:", bet);
-    console.log("balance:", balance);
-    console.log("balance:", bettingAmount);
-
     if (result !== undefined && bet !== undefined) {
+      //checks if gotten result and bet from other components
       switch (btnId) {
+        /* 
+        Cases to compare bet with result. Returns setBalance() with negativ or positiv bettingAmount 
+        (maybe include a multiplyer if bets right on green or one of the twelve) 
+        */
         case "table":
           IfSetBalance(bet.includes(result), 14, "table");
           break;
@@ -62,7 +62,7 @@ const Assets: FC<{
     return () => {
       setBettingAmount(0); //cleanup
     };
-  }, [result]); // fix bug and force render effect
+  }, [result]);
 
   return (
     <div>
@@ -88,15 +88,21 @@ const Assets: FC<{
               onChange={(e) => {
                 parseInt(e.target.value) >= balance
                   ? console.log("over limit")
-                  : setBettingAmount(parseInt(e.target.value));
+                  : setBettingAmount(parseInt(e.target.value)); //sets bettingAmount to inputs value
               }}
             />
           </div>
-          {RenderBettingBtn(balance, bettingAmount, setBettingAmount)}
+          {
+            RenderBettingBtn(
+              balance,
+              bettingAmount,
+              setBettingAmount
+            ) /* renders quick acces betting buttons (10$, 20$, 100$, etc.) */
+          }
         </main>
       </div>
       <div className="bg-gray-600 w-full rounded-b-lg h-24 py-3 px-6">
-        {bet != undefined ? (
+        {bet != undefined ? ( // display current bets
           <div className="flex flex-col">
             <div className="flex justify-center">
               <span className="text-center text-white font-bold text-xl gap-3">
@@ -128,6 +134,7 @@ const Assets: FC<{
             </div>
             <aside className="w-full">
               {RenderBettingTiles(bet, {
+                //render current bett Tiles
                 color: "white",
                 width: "3.75rem",
               })}

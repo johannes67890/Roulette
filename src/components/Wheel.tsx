@@ -28,15 +28,15 @@ const Wheel: FC<{
           }}
         >
           <ul className={Roll === true ? "" : "flex animate-roll"}>
-            {RenderTiles(3) /* render tiles fra function */}
+            {RenderTiles(3) /* render whole array of Tiles 3 times */}
           </ul>
         </div>
         <button
           id="Roll"
           onClick={() => {
-            RollWheel(setResult, Roll, setIsRoll);
-            WinningNumAnimation();
-            CusorDisabledAnimation(setIsRoll);
+            RollWheel(setResult, Roll, setIsRoll); //rolls the wheel
+            WinningNumAnimation(); //displays animation after roll
+            CusorDisabledAnimation(setIsRoll); //disables all buttons when roll
           }}
           className="flex mx-auto px-5 py-1.5 my-2  text-white bg-blue-700 rounded-lg hover:bg-opacity-60"
         >

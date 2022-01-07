@@ -64,7 +64,7 @@ export function getTwelveNum(row: number) {
   ];
 
   switch (
-    row //return parameter
+    row //return parameter of row
   ) {
     case 1:
       return first12;

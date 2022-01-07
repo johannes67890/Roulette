@@ -20,7 +20,7 @@ const Winner: FC<{
               <span className="text-xl mx-auto mb-2 left-1/2 justify-center align-middle">
                 Your bet was the numbers
               </span>
-              {RenderBettingTiles(bet)}
+              {RenderBettingTiles(bet) /* renders betting tiles */}
             </div>
           </main>
         </div>

@@ -6,7 +6,7 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
 
   useEffect(() => {
     if (result !== undefined) {
-      setHistory((prev) => [result].concat(prev));
+      setHistory((prev) => [result].concat(prev)); //concats new result with prev result
     }
   }, [result]);
 
@@ -28,6 +28,7 @@ const History: FC<{ result: TileType | undefined }> = ({ result }) => {
           </svg>
         </span>
         {history.map((value, key) => {
+          //maps thought history array
           return (
             <li
               className={`bg-${value.color} text-center rounded mx-0.5 mb-0.5`}

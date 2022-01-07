@@ -2,7 +2,7 @@
 
 ###### Made by GreatGreg, Weezez and johannes67890
 
-#### School project _Game in 2D_
+#### School project (_Game in 2D_)
 
 ![preview](src/static/preview.png "Website Preview")
 
@@ -12,7 +12,34 @@
 ####- Tailwindcss
 ####- Jquery
 
-## Available Scripts
+## How to build and run the program
+
+_Programs need to install 3rd party libraries_
+
+- Install [git-bash](https://git-scm.com/downloads)
+- Install [Node.js](https://nodejs.org/en/download/)
+
+#### Clone this repository with git-bash with this command:
+
+```
+git clone https://github.com/johannes67890/Roulette.git
+```
+
+#### Open the project in a text editor and install all the dependencies
+
+(install via node package manager or yarn though the terminal)
+
+```
+npm install
+```
+
+#### Run one of the avaliable scripts to run the project
+
+```
+npm start
+```
+
+### Available Scripts (React default README on scripts)
 
 In the project directory, you can run:
 

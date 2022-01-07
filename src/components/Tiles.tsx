@@ -3,12 +3,12 @@ export type TileType = {
   color: string;
   pos: number;
 };
-
+// Array of roulette tiles used thoughtout the program
 export const Tiles: Array<TileType> = [
   {
-    val: 0,
-    color: "green",
-    pos: 1160,
+    val: 0, //value of tile
+    color: "green", //color of tile
+    pos: 1160, //position of tile used for spining the wheel
   },
   {
     val: 32,

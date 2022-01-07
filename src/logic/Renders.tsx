@@ -44,10 +44,12 @@ export function WinningNumAnimation() {
 export function CusorDisabledAnimation(
   SetIsState: React.Dispatch<React.SetStateAction<boolean>>
 ) {
+  //disables all buttons and inputs
   $("button").css("cursor", "not-allowed");
   $("button").prop("disabled", true);
   $("input").prop("disabled", true);
   setTimeout(() => {
+    //enables all buttons an inputs after timeout
     $("button").css("cursor", "pointer");
     $("button").prop("disabled", false);
     $("input").prop("disabled", false);
@@ -60,10 +62,11 @@ export function CusorDisabledAnimation(
 
 export function RenderTiles(sets: number) {
   //sets af Tiles
-  let items: JSX.Element[][] = []; // Indeholder specifike Tiles. Retruner array af JSX elementet + .map funktionen
+  let items: JSX.Element[][] = []; // Includes specifik Tiles. Returns array of JSX elementet + .map function
 
   for (let i = 0; i < sets; i++) {
     items.push(
+      //pushes maped though tiles to items
       Tiles.map((index, key) => (
         <li
           key={key}
@@ -74,9 +77,9 @@ export function RenderTiles(sets: number) {
       ))
     );
   }
-  return items;
+  return items; //returns all sets of tiles at once
 }
-export function RenderBettingTiles(
+export function RenderBettingTiles( //renders Tiles of current bet
   bets: TileType[] | undefined,
   style?: React.CSSProperties | undefined
 ) {
@@ -103,23 +106,25 @@ export function RenderBettingBtn(
   bettingAmount: number,
   setBettingAmount: React.Dispatch<React.SetStateAction<number>>
 ) {
-  let bets = [10, 25, 50, 100, 250, 1000];
-  let betItems: JSX.Element[] = [];
-  for (let i = 0; i < bets.length; i++) {
+  let quickBets = [10, 25, 50, 100, 250, 1000]; //sets values of buttons
+  let betItems: JSX.Element[] = []; //array of alle the buttons (quickBets and hardcoded bets: 1/2, 2X etc.)
+  for (let i = 0; i < quickBets.length; i++) {
     betItems.push(
+      //pushes quickBets to betItems
       <Button
         color="blue-700"
         onClick={() => {
-          if (bettingAmount + bets[i] < balance) {
-            setBettingAmount((bettingAmount += bets[i]));
+          if (bettingAmount + quickBets[i] < balance) {
+            setBettingAmount((bettingAmount += quickBets[i]));
           } else alert("Sorry you are over your balance limit!");
         }}
       >
-        {bets[i]} $
+        {quickBets[i]} $
       </Button>
     );
   }
   betItems.push(
+    //pushes hardcoded bets to betItems
     <>
       <Button
         color="blue-700"
@@ -142,5 +147,5 @@ export function RenderBettingBtn(
       </Button>
     </>
   );
-  return betItems;
+  return betItems; //returns all betItems at once
 }

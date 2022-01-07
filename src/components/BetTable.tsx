@@ -12,19 +12,23 @@ const BetTable: FC<{
     <div className="w-full mt-7">
       <div className="flex gap-2 m-3">
         <div className="grid grid-cols-9 flex-1 grid-rows-3 gap-2">
-          {Tiles.slice(1).map((value, index) => (
-            <Button
-              onClick={() => {
-                setBet([value]);
-                setBtnId("table");
-              }}
-              key={index}
-              color={value.color}
-              Toggleble={true}
-            >
-              {value.val}
-            </Button>
-          ))}
+          {Tiles.slice(1).map(
+            (
+              value,
+              index // gets all Tiles except 0 (green)
+            ) => (
+              <Button
+                onClick={() => {
+                  setBet([value]); //sets users bet
+                  setBtnId("table"); //sets clicked btn
+                }}
+                key={index}
+                color={value.color}
+              >
+                {value.val}
+              </Button>
+            )
+          )}
         </div>
       </div>
 
@@ -61,7 +65,7 @@ const BetTable: FC<{
         <Button
           color={"black"}
           onClick={() => {
-            setBet(Tiles.filter((e) => e.val % 2));
+            setBet(Tiles.filter((e) => e.val % 2)); //gets all odd numbers from Tiles
             setBtnId("odd");
           }}
         >
@@ -70,7 +74,7 @@ const BetTable: FC<{
         <Button
           color={"black"}
           onClick={() => {
-            setBet(Tiles.slice(1).filter((e) => e.val % 2 === 0));
+            setBet(Tiles.slice(1).filter((e) => e.val % 2 === 0)); //gets all even numbers from Tiles
             setBtnId("even");
           }}
         >
@@ -81,7 +85,7 @@ const BetTable: FC<{
         <Button
           color={"red"}
           onClick={() => {
-            setBet(Tiles.filter((e) => e.color === "red"));
+            setBet(Tiles.filter((e) => e.color === "red")); //gets all red Tiles
             setBtnId("red");
           }}
         >
@@ -90,7 +94,7 @@ const BetTable: FC<{
         <Button
           color={"green"}
           onClick={() => {
-            setBet([Tiles[0]]);
+            setBet([Tiles[0]]); //gets green Tile
             setBtnId("green");
           }}
         >
@@ -99,7 +103,7 @@ const BetTable: FC<{
         <Button
           color={"black"}
           onClick={() => {
-            setBet(Tiles.filter((e) => e.color === "black"));
+            setBet(Tiles.filter((e) => e.color === "black")); //gets all black Tiles
             setBtnId("black");
           }}
         >

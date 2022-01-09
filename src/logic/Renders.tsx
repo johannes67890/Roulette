@@ -114,7 +114,7 @@ export function RenderBettingBtn(
       <Button
         color="blue-700"
         onClick={() => {
-          if (bettingAmount + quickBets[i] < balance) {
+          if (bettingAmount + quickBets[i] <= balance) {
             setBettingAmount((bettingAmount += quickBets[i]));
           } else alert("Sorry you are over your balance limit!");
         }}

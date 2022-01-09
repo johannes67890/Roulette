@@ -65,4 +65,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## UML Class diagram
 
-![preview](src/static/RouletteUMLCLASS.png "Website UML diagram")
+![preview](src/static/RouletteUML.jpg "Website UML diagram")

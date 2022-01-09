@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { TileType } from "./components/Tiles";
-import Wheel from "./components//Wheel";
+import Wheel from "./components/Wheel";
 import Winner from "./components/Winner";
 import History from "./components/History";
 import BetTable from "./components/BetTable";

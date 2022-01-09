@@ -9,7 +9,9 @@
 ## Frameworks & 3rd party libraries used
 
 #### - React
+
 #### - Tailwindcss
+
 #### - Jquery
 
 ## How to build and run the program
@@ -60,3 +62,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## UML Class diagram
+
+![preview](src/static/RouletteUMLCLASS.png "Website UML diagram")

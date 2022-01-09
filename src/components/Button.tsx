@@ -3,7 +3,6 @@ import React from "react";
 const Button: React.FC<{
   color?: string;
   onClick?: () => unknown;
-  btnId?: string;
   style?: React.CSSProperties;
 }> = ({ children, onClick, color, style }) => {
   return (
